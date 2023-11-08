@@ -1,0 +1,34 @@
+﻿using Lab9;
+using System.Text;
+
+namespace Lab9.RandomPartsWarehouse
+{
+    public class RandomParts
+    {
+
+        public static PartsWarehouse CreateParts()
+        {
+            Random r = new Random();
+            PartsWarehouse part = new PartsWarehouse(
+                 Utils.getRandomName(),
+                 getRandomId(),
+                 r.NextDouble() + r.Next(50, 50_000),
+                 (uint)r.Next(0, 50)
+                );
+
+            return part;
+        }
+        private static string getRandomId()
+        {
+            Random r = new Random();
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < r.Next(6, 10); i++)
+            {
+                int temp = r.Next(0, 2);
+                sb.Append((char)(temp == 0 ? (r.Next(48, 58)) : (r.Next(65, 91))));
+            }
+            return sb.ToString();
+        }
+    }
+
+}
