@@ -1,5 +1,4 @@
 ﻿using System.Text;
-using static Lab9.SortParts;
 
 namespace Lab9
 {

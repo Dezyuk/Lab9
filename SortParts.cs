@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Lab9
+﻿namespace Lab9
 {
     public class SortParts
     {
@@ -25,6 +19,7 @@ namespace Lab9
                 }
             }
         }
+      
 
         public static bool OrderByNameLeft(PartsWarehouse left, PartsWarehouse right)
         {

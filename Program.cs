@@ -8,7 +8,7 @@ internal class Program
     {
         Storehouse store = new Storehouse();
 
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 50; i++)
         {
             store.AddParts(RandomParts.CreateParts());
         }
@@ -33,15 +33,44 @@ internal class Program
         //Console.WriteLine(store3);
 
 
-        CompareDelegate compareDelegate2 = (left, right) => left.Quantity < right.Quantity;
+        //CompareDelegate compareDelegate2 = (left, right) => left.Quantity < right.Quantity;
+
+
+        //Использование лямбда-выражения
+        Sort(store, (left, right) => left.Price > right.Price);
+
+
+        CompareDelegate orderByNameLeft = delegate (PartsWarehouse left, PartsWarehouse right)
+        {
+            return string.Compare(left.Name, right.Name, StringComparison.Ordinal) > 0;
+        };
+
+        //Использование анонимной функции
+        Sort(store, orderByNameLeft);
 
         //Стандартный делегат
-        //Sort(store, OrderByDescendingNameLeft);
-
-        //Лямбда выражение вместо делегата
-        //Sort(store, compareDelegate2);
-        SortPartsAnonymDelegate.SortOrderByNameLeft(store);
+        Sort(store, OrderByQuantityLeft);
         Console.WriteLine("Sorted parts -------------------------------------------------");
         Console.WriteLine(store);
+
+
+        Console.WriteLine("Filtered parts -------------------------------------------------");
+        Storehouse store2 = FilterParts.Search(store, FilterParts.FilterPriceLover, 2500);
+        Console.WriteLine(store2);
+
+
+        FilterParts.SearchDelegate searchQuantityLover = delegate (PartsWarehouse part, double searchValue)
+        {
+            return part.Quantity < searchValue;
+        };
+
+        Console.WriteLine("Filtered parts -------------------------------------------------");
+        Storehouse store3 = FilterParts.Search(store, searchQuantityLover, 10);
+        Console.WriteLine(store3);
+
+
+        Console.WriteLine("Filtered parts -------------------------------------------------");
+        Storehouse store4 = FilterParts.Search(store, (part, searchValue) => part.Quantity > searchValue, 10);
+        Console.WriteLine(store4);
     }
 }
