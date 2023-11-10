@@ -12,7 +12,7 @@ namespace Lab9.RandomPartsWarehouse
             PartsWarehouse part = new PartsWarehouse(
                  Utils.getRandomName(),
                  getRandomId(),
-                 r.NextDouble() + r.Next(50, 50_000),
+                 r.NextDouble() + (r.Next(50, 500)*10),
                  (uint)r.Next(0, 50)
                 );
 

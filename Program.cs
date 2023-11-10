@@ -1,21 +1,12 @@
 ﻿using Lab9;
 using Lab9.RandomPartsWarehouse;
+using static Lab9.SortParts;
 
 internal class Program
 {
     private static void Main(string[] args)
     {
-        //PartsWarehouse part1 = new PartsWarehouse("Drill", "fds51s1", 60.584, 150);
-        //PartsWarehouse part2 = new PartsWarehouse("Pump", "5d8sf11c", 1000.00, 58);
-        //PartsWarehouse part3 = new PartsWarehouse("Valve", "9df2q3f", 405.35, 7);
-        //PartsWarehouse part4 = new PartsWarehouse("Sealer", "a1f4y2n", 28.99, 200);
-
-
         Storehouse store = new Storehouse();
-        //store.AddParts(part1);
-        //store.AddParts(part2);
-        //store.AddParts(part3);
-        //store.AddParts(part4);
 
         for (int i = 0; i < 5; i++)
         {
@@ -42,13 +33,14 @@ internal class Program
         //Console.WriteLine(store3);
 
 
-
+        CompareDelegate compareDelegate2 = (left, right) => left.Quantity < right.Quantity;
 
         //Стандартный делегат
-        SortParts.Sort(store, Storehouse.OrderByPriceLeft);
+        //Sort(store, OrderByDescendingNameLeft);
 
         //Лямбда выражение вместо делегата
-        SortParts.Sort(store, (left, right) => left.Quantity < right.Quantity);
+        //Sort(store, compareDelegate2);
+        SortPartsAnonymDelegate.SortOrderByNameLeft(store);
         Console.WriteLine("Sorted parts -------------------------------------------------");
         Console.WriteLine(store);
     }
