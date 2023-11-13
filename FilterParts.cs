@@ -17,7 +17,7 @@
             return tempStorehouse;
         }
 
-        public static bool FilterPriceLover(PartsWarehouse part, double value)
+        public static bool FilterPriceLower(PartsWarehouse part, double value)
         {
             return part.Price < value;
         }

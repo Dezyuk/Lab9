@@ -55,17 +55,17 @@ internal class Program
 
 
         Console.WriteLine("Filtered parts -------------------------------------------------");
-        Storehouse store2 = FilterParts.Search(store, FilterParts.FilterPriceLover, 2500);
+        Storehouse store2 = FilterParts.Search(store, FilterParts.FilterPriceLower, 2500);
         Console.WriteLine(store2);
 
 
-        FilterParts.SearchDelegate searchQuantityLover = delegate (PartsWarehouse part, double searchValue)
+        FilterParts.SearchDelegate searchQuantityLower = delegate (PartsWarehouse part, double searchValue)
         {
             return part.Quantity < searchValue;
         };
 
         Console.WriteLine("Filtered parts -------------------------------------------------");
-        Storehouse store3 = FilterParts.Search(store, searchQuantityLover, 10);
+        Storehouse store3 = FilterParts.Search(store, searchQuantityLower, 10);
         Console.WriteLine(store3);
 
 
