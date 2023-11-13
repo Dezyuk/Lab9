@@ -38,12 +38,15 @@ internal class Program
 
         //Использование лямбда-выражения
         Sort(store, (left, right) => left.Price > right.Price);
-
+        Console.WriteLine("Sorted parts -------------------------------------------------");
+        Console.WriteLine(store);
 
         CompareDelegate orderByNameLeft = delegate (PartsWarehouse left, PartsWarehouse right)
         {
             return string.Compare(left.Name, right.Name, StringComparison.Ordinal) > 0;
         };
+        Console.WriteLine("Sorted parts -------------------------------------------------");
+        Console.WriteLine(store);
 
         //Использование анонимной функции
         Sort(store, orderByNameLeft);
@@ -53,7 +56,7 @@ internal class Program
         Console.WriteLine("Sorted parts -------------------------------------------------");
         Console.WriteLine(store);
 
-
+        //Стандартный делегат
         Console.WriteLine("Filtered parts -------------------------------------------------");
         Storehouse store2 = FilterParts.Search(store, FilterParts.FilterPriceLower, 2500);
         Console.WriteLine(store2);
@@ -64,11 +67,12 @@ internal class Program
             return part.Quantity < searchValue;
         };
 
+        //Использование анонимной функции
         Console.WriteLine("Filtered parts -------------------------------------------------");
         Storehouse store3 = FilterParts.Search(store, searchQuantityLower, 10);
         Console.WriteLine(store3);
 
-
+        //Использование лямбда-выражения
         Console.WriteLine("Filtered parts -------------------------------------------------");
         Storehouse store4 = FilterParts.Search(store, (part, searchValue) => part.Quantity > searchValue, 10);
         Console.WriteLine(store4);

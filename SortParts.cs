@@ -4,7 +4,11 @@
     {
         public delegate bool CompareDelegate(PartsWarehouse left, PartsWarehouse right);
 
-
+        /// <summary>
+        /// Сортировка массива
+        /// </summary>
+        /// <param name="storehouse">Список деталей</param>
+        /// <param name="compareDelegate">Делегат</param>
         public static void Sort(Storehouse storehouse, CompareDelegate compareDelegate)
         {
             for (int i = 0; i < storehouse.WarehouseList.LongCount() - 1; i++)

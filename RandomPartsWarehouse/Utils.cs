@@ -2,6 +2,7 @@
 {
     public class Utils
     {
+        //Список деталей(взят из интернета)
         private static Random _random = new();
         private static string[] _parts = {
             "Front ventilated brake disc",

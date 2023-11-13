@@ -5,7 +5,7 @@ namespace Lab9.RandomPartsWarehouse
 {
     public class RandomParts
     {
-
+        //Небольшой блок для создания объектов для тестирования
         public static PartsWarehouse CreateParts()
         {
             Random r = new Random();

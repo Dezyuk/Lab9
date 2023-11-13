@@ -4,6 +4,13 @@
     {
         public delegate bool SearchDelegate(PartsWarehouse part, double searchValue);
 
+        /// <summary>
+        /// Фильтрация по значению
+        /// </summary>
+        /// <param name="parts">Список деталей</param>
+        /// <param name="searchDelegate">Делегат</param>
+        /// <param name="searchValue">Значение</param>
+        /// <returns>Storehouse</returns>
         public static Storehouse Search(Storehouse parts, SearchDelegate searchDelegate, double searchValue)
         {
             Storehouse tempStorehouse = new Storehouse();
