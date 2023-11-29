@@ -13,15 +13,23 @@
         /// <returns>Storehouse</returns>
         public static Storehouse Search(Storehouse parts, SearchDelegate searchDelegate, double searchValue)
         {
-            Storehouse tempStorehouse = new Storehouse();
-            for (int i = 0; i < parts.WarehouseList.LongCount(); i++)
+            if (parts != null && searchDelegate != null)
             {
-                if (searchDelegate(parts.WarehouseList[i], searchValue))
+                Storehouse tempStorehouse = new Storehouse();
+                for (int i = 0; i < parts.WarehouseList.LongCount(); i++)
                 {
-                    tempStorehouse.AddParts(parts.WarehouseList[i]);
+                    if (searchDelegate(parts.WarehouseList[i], searchValue))
+                    {
+                        tempStorehouse.AddParts(parts.WarehouseList[i]);
+                    }
                 }
+                return tempStorehouse;
             }
-            return tempStorehouse;
+            else
+            {
+                throw new ArgumentNullException("Element can not be null");
+            }
+
         }
 
         public static bool FilterPriceLower(PartsWarehouse part, double value)
